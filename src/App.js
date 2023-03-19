@@ -1,20 +1,20 @@
 import logo from './logo.svg';
 import './App.css';
 import Navbar from './components/Navbar';
-// import TextForm from './components/TextForm';
-import About from './components/About';
+import TextForm from './components/TextForm';
+// import About from './components/About';
 
 
-let name = "World!"
+// let name = "World!"
 function App() {
   return (
     <>
       <Navbar title="TextUtils" aboutText="About TextUtils" />
       {/* <Navbar/> */}
-      {/* <div className="container">
+      <div className="container">
         <TextForm heading="Enter the text below to analyze" />
-      </div> */}
-      <About />
+      </div>
+      {/* <About /> */}
     </>
   );
 }
