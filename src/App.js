@@ -4,15 +4,34 @@ import Navbar from './components/Navbar';
 import TextForm from './components/TextForm';
 // import About from './components/About';
 
+import React, { useState } from 'react';
+
 
 // let name = "World!"
 function App() {
+
+  const [mode, setMode] = useState('light');
+
+  const toggleMode = (toggleMode)=>{
+    if(mode === 'light')
+    {
+      setMode("dark");
+      document.body.style.backgroundColor = '#042743';
+    }
+    else
+    {~
+      setMode('light');
+      document.body.style.backgroundColor = 'white';
+    }
+  };
+
   return (
     <>
-      <Navbar title="TextUtils" aboutText="About TextUtils" />
+      <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode} />
+      {/* <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} /> */}
       {/* <Navbar/> */}
-      <div className="container">
-        <TextForm heading="Enter the text below to analyze" />
+      <div className="container" style={{color:mode=='light'?'black':'white'}}>
+        <TextForm heading="Enter the text below to analyze" mode={mode} />
       </div>
       {/* <About /> */}
     </>
