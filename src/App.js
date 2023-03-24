@@ -3,15 +3,15 @@ import "./App.css";
 import Navbar from "./components/Navbar";
 import TextForm from "./components/TextForm";
 import Alert from "./components/Alert";
-// import About from "./components/About";
+import About from "./components/About";
 
-// import { BrowserRouter as Router, Routes, Route, Link } from "react-router-dom";
+import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
 
 import React, { useState } from "react";
 
 // let name = "World!"
 function App() {
-  const [mode, setMode] = useState("light");
+  const [mode, setMode] = useState("light");  
   const [alert, setAlert] = useState(null);
 
   const showAlert = (message, type) => {
@@ -29,33 +29,33 @@ function App() {
       setMode("dark");
       document.body.style.backgroundColor = "#042743";
       showAlert("Dark mode has been Enabled", "success");
-      document.title = "TextUtil - Dark Mode";
+      // document.title = "TextUtil - Dark Mode";
     } else {
       setMode("light");
       document.body.style.backgroundColor = "white";
       showAlert("Light mode has been Enabled", "success");
-      document.title = "TextUtil - Light Mode";
+      // document.title = "TextUtil - Light Mode";
     }
   };
 
   return (
     <>
-      {/* <Router> */}
+      <Router>
         <Navbar title="TextUtils" aboutText="About TextUtils" mode={mode} toggleMode={toggleMode}/>
         {/* <Navbar title="TextUtils" mode={mode} toggleMode={toggleMode} /> */}
         {/* <Navbar/> */}
         <Alert alert={alert} />
 
         <div className="container"style={{ color: mode === "light" ? "black" : "white" }}>
-          <TextForm heading="Enter the text below to analyze" mode={mode} showAlert={showAlert}></TextForm>
-          {/* <About></About> */}
+          {/* <TextForm heading="Enter the text below to analyze" mode={mode} showAlert={showAlert}></TextForm>
+          <About></About> */}
 
-          {/* <Routes>
-            <Route path="/about" element={<About/>}> </Route>
-            <Route path="/" element={<TextForm heading={"Enter the text below to analyze"} mode={mode} showAlert={showAlert} /> } ></Route>
-          </Routes> */}
+          <Routes>
+            <Route path="/" element={<TextForm heading={"Try TextUtils - Word Counter, Character Counter, Remove extra spaces"} mode={mode} showAlert={showAlert} /> } ></Route>
+            <Route path="/about" element={<About mode={mode}/>}> </Route>
+          </Routes>
         </div>
-      {/* </Router> */}
+      </Router>
     </>
   );
 }
