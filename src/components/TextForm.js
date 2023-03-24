@@ -2,7 +2,6 @@ import React, {useState} from 'react'
 
 export default function TextForm(props) {
     // let check = 0;
-
     const handleLoClick = () =>{
         let newText = text.toLowerCase();
         setText(newText);
@@ -10,7 +9,6 @@ export default function TextForm(props) {
     };
 
     const handleUpClick = ()=>{
-        console.log("on click handleUpClick");
         let newText = text.toUpperCase();
         setText(newText);
         props.showAlert("converted to Uppercase!", "success");
@@ -23,7 +21,6 @@ export default function TextForm(props) {
     };
 
     const handleOnChange = (event)=>{
-        console.log("on change");
         // if(check= 0)
         // {
         //     event.target.value = "";
@@ -33,8 +30,9 @@ export default function TextForm(props) {
     };
 
     const handleCopy = ()=>{
-        var text = document.getElementById("myBox");
-        navigator.clipboard.writeText(text.value);
+        // var text = document.getElementById("myBox");
+        // navigator.clipboard.writeText(text.value);
+        navigator.clipboard.writeText(text);
         props.showAlert("Text copied to clipboard!", "success");
     };
 
@@ -63,8 +61,10 @@ export default function TextForm(props) {
 
 <div className="container my-3" style={{color:props.mode==='light'?'black':'white'}}>
     <h2> Your text summary </h2>
-    <p> {text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters </p>
-    <p> {0.008 * text.split(" ").filter((element) => {return element.length!==0}).length} minutes read </p>
+    {/* <p> {text.split(" ").filter((element)=>{return element.length!==0}).length} words and {text.length} characters </p> */}
+    <p> {text.split(/\s+/).filter((element)=>{return element.length!==0}).length} words and {text.length} characters </p>
+    {/* <p> {0.008 * text.split(" ").filter((element) => {return element.length!==0}).length} minutes read </p> */}
+    <p> {0.008 * text.split(/\s+/).filter((element) => {return element.length!==0}).length} minutes read </p>
     <h2>Preview</h2>
     <p> {text.length?text:"Enter something in the textbox to preview here"} </p>
 </div>
